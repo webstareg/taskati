@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:taskati/core/utils/colors.dart';
+import 'package:taskati/features/splash_view.dart';
 
 void main() {
   runApp(const MainApp());
@@ -35,17 +36,13 @@ class MainApp extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide(color: AppColors.red)))),
       // DARK
-      darkTheme: ThemeData(
-          scaffoldBackgroundColor: AppColors.darkBackground,
-          appBarTheme: AppBarTheme(
-            backgroundColor: AppColors.primary,
-            color: AppColors.white,
-          )),
-      home: const Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      // darkTheme: ThemeData(
+      //     scaffoldBackgroundColor: AppColors.darkBackground,
+      //     appBarTheme: AppBarTheme(
+      //       backgroundColor: AppColors.primary,
+      //       color: AppColors.white,
+      //     )),
+      home: const SplashView(),
     );
   }
 }
