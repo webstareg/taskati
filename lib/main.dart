@@ -5,11 +5,6 @@ import 'package:taskati/core/themes/theme.dart';
 import 'package:taskati/features/add-task/data/task_model.dart';
 import 'package:taskati/features/splash_view.dart';
 
-// handling themes (light / dark)
-// adjust box with key of theme
-// listen to value of this key
-// deal with all of widgets by (theme)
-
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox('user');

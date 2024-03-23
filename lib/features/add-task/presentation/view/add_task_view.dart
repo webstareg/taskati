@@ -18,9 +18,9 @@ class AddTaskView extends StatefulWidget {
 
 class _AddTaskViewState extends State<AddTaskView> {
   var date = DateFormat("dd/MM/yyyy").format(DateTime.now());
-  String? startTime = DateFormat('hh:mm a').format(DateTime.now());
+  var startTime = DateFormat('hh:mm a').format(DateTime.now());
   var endTime = DateFormat('hh:mm a')
-      .format(DateTime.now().add(const Duration(minutes: 30)));
+      .format(DateTime.now().add(const Duration(minutes: 60)));
   int color = 0;
 
   var titleController = TextEditingController();
@@ -34,10 +34,9 @@ class _AddTaskViewState extends State<AddTaskView> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme;
-    startTime = widget.model != null
-        ? widget.model?.startTime
-        : DateFormat('hh:mm a').format(DateTime.now());
+    // startTime = widget.model != null
+    //     ? widget.model?.startTime
+    //     : DateFormat('hh:mm a').format(DateTime.now());
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -104,29 +103,6 @@ class _AddTaskViewState extends State<AddTaskView> {
                   firstDate: DateTime.now(),
                   lastDate: DateTime(
                       DateTime.now().add(const Duration(days: 365)).year),
-                  // builder: (context, child) {
-                  //   return Theme(
-                  //     data: ThemeData(
-                  //       // dialogBackgroundColor: AppColors.black,
-                  //       datePickerTheme: DatePickerThemeData(
-                  //           headerForegroundColor: theme.onSurface,
-                  //           yearForegroundColor:
-                  //               MaterialStatePropertyAll(theme.primary)),
-                  //       colorScheme: ColorScheme.fromSeed(
-                  //           primary: theme.primary, // header background color
-                  //           onPrimary: theme.primary, // header text color
-                  //           onSurface: theme.primary,
-                  //           seedColor: theme.background // body text color
-                  //           ),
-                  //       textButtonTheme: TextButtonThemeData(
-                  //         style: TextButton.styleFrom(
-                  //           foregroundColor: theme.primary, // button text color
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     child: child!,
-                  //   );
-                  // },
                 ).then((value) {
                   if (value != null) {
                     setState(() {
@@ -165,7 +141,7 @@ class _AddTaskViewState extends State<AddTaskView> {
             const Gap(5),
             Row(
               children: [
-                // start time -----------------------
+                // Start time
                 Expanded(
                   child: TextFormField(
                     readOnly: true,
@@ -187,6 +163,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                   ),
                 ),
                 const Gap(10),
+                // End time
                 Expanded(
                   child: TextFormField(
                     readOnly: true,
@@ -252,7 +229,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                             title: titleController.text,
                             note: noteController.text,
                             date: date,
-                            startTime: startTime!,
+                            startTime: startTime,
                             endTime: endTime,
                             color: color,
                             isComplete: false));
